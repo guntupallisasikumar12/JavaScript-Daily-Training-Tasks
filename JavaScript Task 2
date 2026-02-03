@@ -1,0 +1,123 @@
+JavaScript Day 2 Assignment
+Topics Covered: Printing Statements, Console Methods, Data Types, Operators, Arrays, Objects Instructions: No loops. No conditional statements. Only use topics covered in class. Submission Deadline: Tomorrow – End of Day (EOD)
+
+
+1. Welcome Program
+-	Ask user name using prompt().
+-	Show alert: Hi , Welcome to JavaScript Training.- Print the same message in console.
+Ans:  let userName = prompt(“Enter your name:”);
+          let welcomeMsg = “Hi” + username + “, Welcome to JavaScript Training.”);
+           alert(welcomeMsg);
+           console.log(welcomeMsg);
+
+          
+2. Console Methods Practice
+- Print 500 using console.log(), console.warn(), console.error(). - Use console.clear().
+Ans: console.log(500);
+        console.warn(500);
+        console.error(500);
+        console.clear();    // clears console
+
+
+3. Data Type Identification
+- Create string, number, boolean, undefined, and null variables. - Print value and type using typeof.
+Ans: let str = "JavaScript";      // string
+        let num = 187;                // number
+        let bool = true;               // boolean
+        let undef;                       // undefined
+        let nul = null;                 // null
+
+        console.log("Value:", str, " | Type:", typeof str);
+        console.log("Value:", num, " | Type:", typeof num);
+        console.log("Value:", bool, " | Type:", typeof bool);
+        console.log("Value:", undef, " | Type:", typeof undef);
+        console.log("Value:", nul, " | Type:", typeof nul);   // null shows as object.
+
+
+4. Arithmetic Operations
+-	Use let a = 20 and let b = 5.
+-	Perform +, -, *, /, %, ** and print results.
+Ans: let a = 20;
+        let b = 5;
+        console.log("Addition:", a + b);
+        console.log("Subtraction:", a - b);
+        console.log("Multiplication:", a * b);
+        console.log("Division:", a / b);
+        console.log("Remainder (%):", a % b);
+        console.log("Exponentiation (**):", a ** b);
+
+
+5. Increment & Decrement
+- Demonstrate pre-increment, post-increment, pre-decrement, post-decrement. - Print variables clearly.
+Ans: let x = 20;
+         console.log("Initial Value:", x);
+         console.log("Pre-Increment (++x):", ++x);
+         console.log("Post-Increment (x++):", x++);
+         console.log("After Post-Increment:", x);
+         console.log("Pre-Decrement (--x):", --x);
+         console.log("Post-Decrement (x--):", x--);
+         console.log("After Post-Decrement:", x);
+
+
+6. Assignment Operators - Use let num = 10.
+- Perform +=, -=, *=, /=, %= and print results.
+Ans: let num3 = 10;
+        console.log("Initial Value:", num3);
+        num3 += 5;
+        console.log("After += 5:", num3);
+        num3 -= 3;
+        console.log("After -= 3:", num3);
+        num3 *= 2;
+        console.log("After *= 2:", num3);
+        num3 /= 4;
+        console.log("After /= 4:", num3);
+         num3 %= 3;
+        console.log("After %= 3:", num3);
+
+
+7. Array Access
+-	Create array ['HTML','CSS','JavaScript','React'].
+-	Print first element, second element, last element (using length), and total elements.
+Ans: let courses = ['HTML', 'CSS', 'JavaScript', 'React'];
+            console.log("First Element:", courses[0]);
+            console.log("Second Element:", courses[1]);
+            console.log("Last Element:", courses[courses.length - 1]);
+            console.log("Total Elements:", courses.length);
+
+
+8. Modify Array
+-	Add one element at end.
+-	Remove last element.- Print updated array.
+Ans: techs.push('Node.js');      // Add at end
+         console.log("Added element:", techs);
+         techs.pop();           // Remove last element
+          console.log("Removed last element:", techs);
+
+
+9. Student Object
+- Create object with name, age, course, city. - Print values using dot notation.
+Ans: let student = {
+        name: "Sasi",
+        age: 25,
+        course: "JavaScript",
+        city: "Guntur"
+         };
+        console.log("Student Name:", student.name);
+        console.log("Age:", student.age);
+        console.log("Course:", student.course);
+        console.log("City:", student.city);
+
+
+10. Nested Object Practice
+-	Create company object with nested trainer object.
+-	Print company name, trainer name, trainer subject.
+Ans: let company = {
+        name: "STACKLY",
+        trainer: {
+       name: "Naveen Kumar",
+       subject: "Web Development"
+           }
+       };
+       console.log("Company Name:", company.name);
+       console.log("Trainer Name:", company.trainer.name);
+       console.log("Trainer Subject:", company.trainer.subject);
