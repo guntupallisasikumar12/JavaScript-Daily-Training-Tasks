@@ -1,0 +1,138 @@
+Internship Assignment – JavaScript (var, let, const)
+Topic: JavaScript Variables (var, let, const) Submission Date: Tomorrow Instructions:
+•	Answer all questions clearly
+•	Mention reason for error-based questions
+•	Write clean and readable code
+
+SECTION A: Technical Questions
+
+
+1.	What is the difference between var, let, and const?
+Ans: 
+Keyword	Scope	Redeclaration	Reassignment	Hoisting
+var	Function-scoped	 Allowed	Allowed	 Hoisted (initialized as undefined)
+let	Block-scoped	 Not allowed	Allowed	 Hoisted (but in Temporal Dead Zone)
+const	Block-scoped	 Not allowed	 Not allowed	 Hoisted (but in Temporal Dead Zone)
+
+
+2.	Which keyword allows redeclaration and why?
+Ans: Var allows redeclaration. Because this was part of the original design of JavaScript. It treats multiple declarations of the same variable name in the same scope as a single variable, simply overwriting the previous value. This often leads to accidental bugs in large scripts.
+
+
+3.	Which keyword allows reinitialization?
+Ans: Both var and let allow you to change the value of a variable after it has been created.
+
+
+4.	Which keyword does not allow redeclaration and reinitialization?
+Ans: Const allows the redeclaration and reinitialization. Because once declared and initialized, we cannot redeclare or reassign it.
+
+
+5.	Why should const be used for fixed values?
+Ans: Because const prevents accidental changes to a variable’s value, making code more stable and predictable. It is best for values that should never change, like configuration data or constants.
+
+
+6.	What error occurs when redeclaring a let variable?
+Ans: We will receive a SyntaxError.
+         Because Let will not allow redeclaring.
+
+
+7.	What error occurs when reassigning a const variable?
+Ans: We will receive a TypeError.
+         Because Const will not allow reassigning.
+
+
+8.	Which keyword is preferred in modern JavaScript and why?
+Ans: Both Let and Const are preferred in modern JavaScript. Because they provide block scope, prevent accidental redeclaration, and make code more predictable.
+
+
+9.	Can const be declared without initialization? Explain.
+Ans:  No, because A const variable must be initialized at the time of declaration, otherwise a SyntaxError occurs.
+
+
+10.	When should var be avoided?
+Ans: var should be avoided in modern JavaScript development due to its function-scoping behaviour and hoisting, which can lead to unexpected behaviour and makes the code less predictable compared to block-scoped let and const.
+
+
+SECTION B: Code-Based Questions
+
+11.	Predict the output:
+var a = 10; a = 20; var a = 30; console.log(a);
+Output: a=30
+
+
+12.	Predict the output:
+let b = 5; b = 15; console.log(b);
+Output: b=15
+
+
+13.	Identify the error:
+let x = 10; let x = 20;
+Output: SyntaxError
+
+
+14.	Identify the error:
+const y = 50; y = 100;
+Output: TypeError
+
+
+15.	Write a program using var to show redeclaration.
+Ans: var user = “Siva”;
+        var user = “Prasad”;
+        console.log(user);
+  Output: Prasad
+
+
+16.	Write a program using let to show reinitialization.
+Ans: let age = 23;
+        let age = 28;
+        console.log(age);
+  Output: 28
+
+
+17.	Write a program using const and explain why value cannot change.
+Ans: const PI = 30;
+         const PI = 40;
+        console.log(PI);
+ Output: TypeError
+Explanation: A const value cannot be changed or redeclared. Use it for fixed constants like mathematical or configuration values.
+
+
+18.	Convert var to let where applicable.
+Ans: var name = “Sasi”;
+              name = “Kumar”;
+        console.log(name);
+
+        let name = “Sasi’;
+             name = “Kumar”;   // value can change
+        console.log(name);
+
+
+19.	Convert var to const where applicable.
+Ans: var country = “INDIA”;
+         console.log(country);
+
+         const country = “INDIA”;
+         console.log(country);
+
+
+20.	Write your own example for var, let, and const.
+Ans: Example using var
+var score = 10;
+var score = 15; // Reassign
+var score = 18; // Redeclare
+console.log( score); 
+Output: 18
+
+Example using let
+let age = 15;
+let age = 25; // Reassign allowed
+      let age = 35; // Redeclare not allowed
+console.log( age);
+Output: 25
+
+Example using const
+const country = "INDIA";
+const country = "SRI LANKA"; // Not allowed
+console.log(country);
+Output: INDIA
+End of Assignment
