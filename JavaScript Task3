@@ -1,0 +1,313 @@
+TASK – 3 (Based on Today’s Session)
+ 
+Part 1 – Logical & Ternary Operator
+
+Q1: Check whether a number is between 10 and 50 using logical AND.
+Input: let num = 25
+Output: "Valid Number" or "Invalid Number"
+Ans: 
+let num = 25;
+
+if (num >= 10 && num <= 50) {
+  console.log("Valid Number");
+} else {
+  console.log("Invalid Number");
+}
+Output: 
+       Vaild Number
+
+Q2: Check if a user is eligible to log in.
+Condition:
+username must be "admin" password must be "1234" Use logical AND.
+Ans: 
+let username = "admin";
+let password = "1234";
+
+if (username === "admin" && password === "1234") {
+  console.log("Login Successful");
+} else {
+  console.log("Invalid Credentials");
+}
+Output: 
+       Login Successful
+
+Q3: Using ternary operator:
+Check if a number is even or odd.
+Ans: 
+let number = 8;
+let result = (number % 2 === 0) ? "Even" : "Odd";
+console.log(result);
+Output: 
+       Even
+
+Q4: What is the output?
+console.log((10 === "10") || (5 > 2) && !(3 < 1)); Explain step by step.
+Ans:
+console.log((10 === "10") || (5 > 2) && !(3 < 1));
+(10 === "10") → false (strict equality checks type too)
+
+(5 > 2) → true
+
+(3 < 1) → false, so !(3 < 1) → true
+
+(5 > 2) && !(3 < 1) → true && true → true
+
+Final: false || true → ✅ true
+Output: 
+       true
+
+
+Part 2 – Type Conversion
+
+Q5: Find the output and explain:
+console.log("5" + 2); console.log("5" - 2); console.log("5" * 2); console.log("5" / 2);
+Ans:
+console.log("5" + 2); // "52" → String concatenation
+console.log("5" - 2); // 3 → String converted to number
+console.log("5" * 2); // 10 → String converted to number
+console.log("5" / 2); // 2.5 → String converted to number
+Output: 
+       52
+       3
+       10
+       2.5
+
+Q6: Convert the following using explicit conversion:
+let value = "100"; - Convert to Number - Convert to Boolean
+Ans:
+let value=100;
+let numvalue=Number(value);
+console.log(numvalue);
+console.log(typeof(numvalue));
+Output: 
+       100
+       number
+
+let boolvalue=Boolean(value);
+console.log(boolvalue)
+console.log(typeof(boolvalue));
+Output: 
+       true
+       Boolean
+
+Q7: What will be the output? console.log(Boolean("")); console.log(Boolean(" ")); console.log(Boolean(0)); console.log(Boolean([])); Explain why.
+Ans: 
+console.log(Boolean(""));   // false (empty string)
+console.log(Boolean(" "));  // true (space is non-empty)
+console.log(Boolean(0));    // false
+console.log(Boolean([]));   // true (empty array is truthy)
+Output: 
+        false
+        true
+        false
+        true
+
+Part 3 – Conditional Statements
+
+Q8: Write a program:
+If marks >= 90 → Grade A
+If marks >= 75 → Grade B
+If marks >= 50 → Grade C
+Else → Fail Use if else if.
+Ans: 
+let marks = 82;
+
+if (marks >= 90) {
+  console.log("Grade A");
+} else if (marks >= 75) {
+  console.log("Grade B");
+} else if (marks >= 50) {
+  console.log("Grade C");
+} else {
+  console.log("Fail");
+}
+Output: 
+       Grade B
+
+Q9: Traffic Signal Program using switch case:
+"red" → Stop
+"yellow" → Ready
+"green" → Go
+Default → Invalid Signal
+Ans: 
+let signal = "yellow";
+
+switch (signal) {
+  case "red":
+    console.log("Stop");
+    break;
+  case "yellow":
+    console.log("Ready");
+    break;
+  case "green":
+    console.log("Go");
+    break;
+  default:
+    console.log("Invalid Signal");
+}
+Output: 
+       Ready
+
+Q10 (Nested If): Check eligibility:
+Age >= 18
+Height >= 160
+Weight >= 50
+If all true → "Selected"
+Else → show which condition failed.
+Ans:
+let age = 20, height = 165, weight = 55;
+
+if (age >= 18) {
+  if (height >= 160) {
+    if (weight >= 50) {
+      console.log("Selected");
+    } else {
+      console.log("Failed: Weight too low");
+    }
+  } else {
+    console.log("Failed: Height too short");
+  }
+} else {
+  console.log("Failed: Age below 18");
+}
+Output: 
+       Selected
+
+Part 4 – Loops
+
+Q11: Print numbers from 1 to 20 using for loop.
+Ans: 
+   for (let i = 1; i <= 20; i++) {
+   console.log(i);
+}
+
+Q12: Print only odd numbers from 1 to 20.
+Ans:
+    for (let j = 1; j <= 20; j++) {
+    if (j % 2 !== 0) console.log(j);
+}
+
+Q13: Using while loop:
+print number from 10 to 1.
+Ans:
+let k = 10;
+while (k >= 1) {
+  console.log(k);
+  i--;
+}
+
+Q14: Using do-while loop:
+Print numbers from 1 to 5.
+Ans:
+let m = 1;
+do {
+  console.log(m);
+  m++;
+} while (m <= 5);
+
+Q15: Using for-of loop: Print each character from: let word = "STACKLY"
+Ans:
+let word = "STACKLY";
+for (let ch of word) {
+  console.log(ch);
+}
+
+Q16: Using for-in loop: Print both key and value from:
+let student = { name: "Arun", course: "MERN",
+duration: "6 months"
+}
+Ans: let student = {
+  name: "Arun",
+  course: "MERN",
+  duration: "6 months"
+};
+for (let key in student) {
+  console.log(`${key}: ${student[key]}`);
+}
+
+Real-Time Questions
+
+RT-1: Login System
+If username = "admin" AND password = "1234" → "Login Success" Else → "Invalid Credentials" Use logical operator + ternary.
+Ans:
+let user = "admin", pass = "1234";
+let login = (user === "admin" && pass === "1234") ? "Login Success" : "Invalid Credentials";
+console.log(login);
+Output: 
+       Login Success
+
+RT-2: Salary Bonus System
+If employee salary > 50000 AND experience > 3 years
+→ Eligible for bonus Else → Not eligible
+Ans: 
+let salary = 60000;
+let experience = 4;
+
+if (salary > 50000 && experience > 3) {
+  console.log("Eligible for bonus");
+} else {
+  console.log("Not eligible");
+}
+Output: 
+       Eligible for bonus 
+
+RT-3: Shopping Discount If cart amount:
+>= 5000 → 20% discount
+>= 2000 → 10% discount
+< 2000 → No discount
+Use if-else if.
+Ans: 
+    let cart = 4500;
+
+if (cart >= 5000) {
+  console.log("20% discount");
+} else if (cart >= 2000) {
+  console.log("10% discount");
+} else {
+  console.log("No discount");
+}
+Output: 
+       10% discount
+
+RT-4: Even/Odd Counter
+Count how many even numbers between 1 to 50.
+Ans: 
+let evenCount = 0;
+
+for (let i = 1; i <= 50; i++) {
+  if (i % 2 === 0) {
+    evenCount++;
+  }
+}
+console.log("Total even numbers:", evenCount);
+Output: 
+       Total even numbers: 25
+
+RT-5: Dynamic Greeting System If hour between:
+1–6 → Good Morning
+7–12 → Morning
+13–16 → Good Afternoon
+17–19 → Good Evening Else → Good Night
+Ans: 
+let hour = 18; // change value to test
+
+if (hour >= 1 && hour <= 6) {
+  console.log("Good Morning");
+} else if (hour >= 7 && hour <= 12) {
+  console.log("Morning");
+} else if (hour >= 13 && hour <= 15r) {
+  console.log("Good Afternoon");
+} else if (hour >= 16 && hour <= 18) {
+  console.log("Good Evening");
+} else {
+  console.log("Good Night");
+}
+Output: 
+       Good Evening
+
+
+Submission Instructions:
+•	Code must run without errors.
+•	Explanation required for output-based questions.
+•	No copy-paste.
+•	Submit before EOD.
