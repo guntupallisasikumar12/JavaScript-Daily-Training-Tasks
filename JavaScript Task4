@@ -1,0 +1,340 @@
+INTERMEDIATE LEVEL - FUNCTIONS FULL ASSIGNMENT
+SECTION 1 – Real-Time Function Logic
+1. Payroll System:
+Create calculateSalary(basicSalary, bonusPercentage)
+-	Calculate bonus
+-	Deduct 5% tax
+-	Return final salary- Print full salary breakdown
+//Ans: 
+function calculateSalary(basicSalary, bonusPercentage) {
+  let bonus = (basicSalary * bonusPercentage) / 100;
+  let grossSalary = basicSalary + bonus;
+  let tax = grossSalary * 0.05; // 5% tax
+  let finalSalary = grossSalary - tax;
+
+  console.log("===== Salary Breakdown =====");
+  console.log(`Basic Salary: ₹${basicSalary}`);
+  console.log(`Bonus (${bonusPercentage}%): ₹${bonus}`);
+  console.log(`Tax (5%): ₹${tax}`);
+  console.log(`Final Salary: ₹${finalSalary}`);
+  
+  return finalSalary;
+}
+
+calculateSalary(50000, 10);
+
+2. Student Result System:
+Create generateResult(name, marksArray)
+-	Calculate total
+-	Calculate average
+-	Decide Grade (A/B/C/Fail)
+-	Return result object
+//Ans: 
+function generateResult(name, marksArray) {
+  let total = marksArray.reduce((sum, m) => sum + m, 0);
+  let average = total / marksArray.length;
+
+  let grade = "";
+  if (average >= 90) grade = "A";
+  else if (average >= 75) grade = "B";
+  else if (average >= 50) grade = "C";
+  else grade = "Fail";
+
+  let result = {
+    name,
+    total,
+    average,
+    grade
+  };
+
+  console.log("===== Student Result =====");
+  console.log(result);
+  return result;
+}
+
+generateResult("Sasi", [75, 92, 88, 90, 95]);
+
+SECTION 2 – Scope & Hoisting (Debugging)
+
+3. Debug This Code: function demo(){
+if(true){ var a = 10; let b = 20;
+}
+console.log(a); console.log(b);
+}
+Questions:
+-	What will happen?
+-	Why?
+-	Fix it properly.
+//Ans:
+function demo(){
+  if(true){ 
+    var a = 10; 
+    let b = 20;
+  }
+  console.log(a); 
+  console.log(b);
+}
+demo();
+
+var is function-scoped: Even though a is defined inside an if block, JavaScript "hoists" its declaration to the top of the function. This makes it accessible anywhere within demo().
+
+let (and const) are block-scoped: The variable b only exists within the curly braces {} of the if statement. Once the code moves past the closing brace, b is no longer accessible.
+
+function demo(){
+  var a;
+  let b;
+  if(true){ 
+    a = 10; 
+    b = 20;
+  }
+  console.log(a); 
+  console.log(b);
+}
+demo();
+
+4.	Hoisting Analysis: console.log(x); var x = 100;
+console.log(y); let y = 200;
+Predict output and explain.
+//Ans:
+console.log(x); 
+var x = 100;
+// undefined
+
+console.log(y); 
+let y = 200;
+// ReferenceError y is accessed before initialization we cannot do that.
+
+Explanation:
+
+var is hoisted and initialized as undefined.
+
+let is hoisted but in the Temporal Dead Zone until its declaration — hence ReferenceError.
+
+SECTION 3 – Callback & Higher Order (Industry Simulation)
+
+5.	Order Processing System:
+Create processOrder(orderId, callback)
+- Print "Order Processed" - Call generateInvoice(orderId)
+//Ans:
+function processOrder(orderId, callback) {
+  console.log(`Order ${orderId} processed.`);
+  callback(orderId);
+}
+
+function generateInvoice(orderId) {
+  console.log(`Invoice generated for order ${orderId}.`);
+}
+
+processOrder("ORD1001", generateInvoice);
+
+6. Bank Transaction System:
+Create transaction(amount, type, callback)
+-	If deposit → add
+-	If withdraw → subtract
+-	Call sendSMS()
+//Ans: 
+function transaction(amount, type, callback) {
+  let balance = 20000;
+  if (type === "deposit") {
+    balance += amount;
+  } else if (type === "withdraw") {
+    balance -= amount;
+  } else {
+    console.log("Invalid transaction type");
+    return;
+  }
+  console.log(`Transaction successful. Current Balance: ₹${balance}`);
+  callback();
+}
+
+function sendSMS() {
+  console.log("📱 SMS: Transaction notification sent.");
+}
+
+transaction(4000, "deposit", sendSMS);
+
+SECTION 4 – Currying (E-Commerce)
+7.	Dynamic Price Builder:
+Create priceBuilder(basePrice)(discount)(tax)
+Return final price
+Example: priceBuilder(2000)(15)(18) SECTION 5 – IIFE (Security + Encapsulation)
+//Ans: 
+function priceBuilder(basePrice) {
+  return function(discount) {
+    return function(tax) {
+      let discountedPrice = basePrice - (basePrice * discount) / 100;
+      let finalPrice = discountedPrice + (discountedPrice * tax) / 100;
+      return finalPrice;
+    };
+  };
+}
+
+console.log("Final Price: ₹" + priceBuilder(2000)(15)(18));
+
+8.	Secure Company Module:
+-	Store private variable companyCode
+-	Expose getCompanyStatus()
+-	companyCode should not be directly accessible
+//Ans:
+const companyModule = (function() {
+  let companyCode = "STACKLY123"; // private
+
+  return {
+    getCompanyStatus: function() {
+      return "Company is active ✅";
+    }
+  };
+})();
+
+console.log(companyModule.getCompanyStatus());
+console.log(companyModule.companyCode); // undefined (not accessible)
+
+SECTION 6 – Generator (Advanced Logic)
+
+9.	Unique Order ID Generator:
+Generate ORD1001, ORD1002, ORD1003, etc.
+//Ans: 
+function* orderIdGenerator() {
+  let id = 1000;
+  while(true) {
+    id++;
+    yield `ORD${id}`;
+  }
+}
+
+const generator = orderIdGenerator();
+console.log(generator.next().value);
+console.log(generator.next().value);
+console.log(generator.next().value);
+
+10.	Coupon Spin System:
+Yield:
+-	10% OFF
+-	20% OFF
+-	50% OFF
+-	No Luck
+-	Jackpot
+//Ans: 
+function* couponSpin() {
+  const coupons = ["10% OFF", "20% OFF", "50% OFF", "No Luck", "Jackpot"];
+  while(true) {
+    yield coupons[Math.floor(Math.random() * coupons.length)];
+  }
+}
+
+const spin = couponSpin();
+console.log(spin.next().value);
+console.log(spin.next().value);
+console.log(spin.next().value);
+
+Simulate multiple spins. SECTION 7 – Mini Project (Integrated)
+Mini E-Commerce Flow:
+-	addToCart(product, price)
+-	calculateTotal()
+-	applyDiscount() using currying
+-	generateCoupon() using generator
+-	processPayment() using callback
+-	Hide config using IIFE
+//Ans:
+// IIFE for secure config
+const ecommerce = (function() {
+  let cart = [];
+  let total = 0;
+
+  function addToCart(product, price) {
+    cart.push({ product, price });
+    console.log(`${product} added to cart.`);
+  }
+
+  function calculateTotal() {
+    total = cart.reduce((sum, item) => sum + item.price, 0);
+    console.log(`Total: ₹${total}`);
+    return total;
+  }
+
+  // Currying for discount
+  function applyDiscount(discount) {
+    return function(tax) {
+      let discounted = total - (total * discount) / 100;
+      let final = discounted + (discounted * tax) / 100;
+      console.log(`Final Price after discount & tax: ₹${final}`);
+      return final;
+    };
+  }
+
+  // Generator for coupons
+  function* couponGenerator() {
+    const coupons = ["5% OFF", "10% OFF", "No Discount"];
+    while(true) {
+      yield coupons[Math.floor(Math.random() * coupons.length)];
+    }
+  }
+
+  function processPayment(callback) {
+    console.log("Processing Payment...");
+    callback();
+  }
+
+  function sendPaymentSMS() {
+    console.log("📲 Payment successful message sent!");
+  }
+
+  return {
+    addToCart,
+    calculateTotal,
+    applyDiscount,
+    couponGenerator,
+    processPayment,
+    sendPaymentSMS
+  };
+})();
+
+// Execution
+ecommerce.addToCart("Laptop", 55000);
+ecommerce.addToCart("Mouse", 1500);
+ecommerce.calculateTotal();
+
+const discountFn = ecommerce.applyDiscount(10);
+discountFn(18);
+
+const coupon = ecommerce.couponGenerator();
+console.log("🎁 Coupon: ", coupon.next().value);
+
+ecommerce.processPayment(ecommerce.sendPaymentSMS);
+
+Concept Questions:
+1.Difference between function declaration & expression?
+//Ans:
+Function Declaration
+A declaration is a standalone statement. It starts with the function keyword and must have a name.
+Hoisting: These are hoisted to the top of their scope. You can call the function before it appears in the code.
+Behavior: The JavaScript engine "registers" these functions before executing the script. 
+Function Expression
+An expression is created when a function is assigned to a variable. These can be anonymous (no name).
+Hoisting: These are not hoisted. If you try to call it before the variable is defined, you will get a ReferenceError or TypeError.
+Behavior: The function is created only when the execution reaches that line.
+
+2.	What is higher order function?
+//Ans: A Higher-Order Function is a function that does at least one of the following:
+Takes one or more functions as arguments.
+Returns a function as its result.
+This is possible because functions in JavaScript are "First-Class Citizens," meaning they can be treated like any other variable.
+
+3.	Real-time example of generator?
+//Ans:
+Generating unique IDs
+Infinite scroll pagination
+Lazy data fetching in APIs
+
+4.	Why do we use IIFE?
+//Ans:
+To protect private data
+Avoid polluting the global scope
+
+5.	Difference between var, let, const?
+//Ans: 
+Feature	var	let	const
+Scope	Function Scope	Block Scope {}	Block Scope {}
+Hoisting	Hoisted (returns undefined)	Hoisted (TDZ - Reference Error)	Hoisted (TDZ - Reference Error)
+Re-declaration	Allowed	Not Allowed	Not Allowed
+Re-assignment	Allowed	Allowed	Not Allowed
