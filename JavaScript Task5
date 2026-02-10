@@ -1,0 +1,163 @@
+ES6 + Array Advanced Practice Tasks
+TASK 1 – Employee Merge System (Spread Operator)
+You have:
+let empBasic = { name: "Naveen", role: "Trainee", salary: 20000 } let empPromotion = { role: "Developer", bonus: 10000 }
+Requirements:
+1.	Merge both objects using spread.
+2.	Update salary to 40000.
+3.	Add new property: experience: "2 years"
+4.	Print final employee object.
+//Ans:Employee Merge System (Spread Operator)
+
+let empBasic = { 
+  name: "Naveen", 
+  role: "Trainee", 
+  salary: 20000 
+};
+
+let empPromotion = { 
+  role: "Developer", 
+  bonus: 10000 
+};
+
+let finalEmp = { ...empBasic, ...empPromotion };
+finalEmp.salary = 40000;
+finalEmp.experience = "2 years";
+console.log(finalEmp);
+
+------------------------------------------------------------
+TASK 2 – Shopping Cart (Spread + Array)
+let cart1 = ["Shoes", "Shirt"] let cart2 = ["Watch", "Cap"]
+Requirements:
+1.	Merge both carts.
+2.	Add "Bag" at the end.
+3.	Add "Socks" at the beginning.
+4.	Print final cart.
+//Ans:Shopping Cart (Spread + Array)
+
+let cart1 = ["Shoes", "Shirt"];
+let cart2 = ["Watch", "Cap"];
+
+let mergedCart = [...cart1, ...cart2];
+let finalCart = ["Socks", ...mergedCart, "Bag"];
+console.log(finalCart);
+
+------------------------------------------------------------
+TASK 3 – Rest Operator Salary Calculator
+Create function:
+calculateTotalSalary(baseSalary, ...bonuses)
+Requirements:
+1.	Add all bonus values.
+2.	Return total salary.
+3.	Example: calculateTotalSalary(30000, 2000, 3000, 5000) Expected Output: Total Salary: 40000
+//Ans:Rest Operator Salary Calculator
+
+function calculateTotalSalary(baseSalary, ...bonuses) {
+  let totalBonus = bonuses.reduce((sum, val) => sum + val, 0);
+  let totalSalary = baseSalary + totalBonus;
+  console.log(`Total Salary: ${totalSalary}`);
+}
+calculateTotalSalary(30000, 2000, 3000, 5000);
+
+------------------------------------------------------------
+TASK 4 – Advanced Destructuring
+let student = { name: "Rahul",
+marks: { maths: 90, science: 85, english: 88 }
+}
+Requirements:
+1.	Destructure name.
+2.	Destructure maths and science.
+3.	Print:
+Rahul scored 90 in maths and 85 in science
+//Ans: Advanced Destructuring
+
+let student = { 
+  name: "Rahul",
+  marks: { 
+    maths: 90, 
+    science: 85, 
+    english: 88 
+  }
+};
+
+let { name } = student;
+let { maths, science } = student.marks;
+console.log(`${name} scored ${maths} in maths and ${science} in science`);
+
+------------------------------------------------------------
+TASK 5 – Array Manipulation let numbers = [10,20,30,40,50]
+Requirements:
+1.	Remove 30 using splice.
+2.	Add 25 in its place.
+3.	Reverse array.
+4.	Check if 50 exists.
+5.	Print final array.
+//Ans: Array Manipulation
+
+let numbers = [10, 20, 30, 40, 50];
+
+numbers.splice(2, 1, 25); // 2 = index of 30, 1 = remove 1 element, 25 = add in its place
+numbers.reverse();
+let hasFifty = numbers.includes(50);
+console.log("Final Array:", numbers);
+console.log("Does 50 exist?", hasFifty);
+
+------------------------------------------------------------
+TASK 6 – Flatten Data
+let apiData = [1,2,[3,4,[5,6,[7,8]]]]
+Requirements:
+1.	Convert into single array.
+2.	Print output.
+3.	Find index of 6.
+//Ans:
+let apiData = [1, 2, [3, 4, [5, 6, [7, 8]]]];
+let flatData = apiData.flat(Infinity);
+console.log("Flattened Array:", flatData);
+let indexOfSix = flatData.indexOf(6);
+console.log("Index of 6:", indexOfSix);
+
+------------------------------------------------------------
+TASK 7 – Sorting Problem let prices = [100, 5, 25, 300, 45]
+Requirements:
+1.	Sort in ascending order properly.
+2.	Sort in descending order properly.(Note: Use compare function)
+//Ans: Sorting Problem
+let prices = [100, 5, 25, 300, 45];
+
+// 1. Sort in ascending order properly
+let ascending = [...prices].sort((a, b) => a - b);
+console.log("Ascending Order:", ascending);
+
+// 2. Sort in descending order properly
+let descending = [...prices].sort((a, b) => b - a);
+console.log("Descending Order:", descending);
+
+------------------------------------------------------------
+BONUS HARD TASK – Team Level
+let users = [ {name: "A", salary: 20000},
+{name: "B", salary: 40000},
+{name: "C", salary: 30000}
+]
+Requirements:
+1.	Increase everyone salary by 5000 using spread.
+2.	Return new updated array.
+3.	Sort based on salary (high to low).
+//Ans: // BONUS HARD TASK – Team Level
+
+let users = [
+  { name: "A", salary: 20000 },
+  { name: "B", salary: 40000 },
+  { name: "C", salary: 30000 }
+];
+
+// 1 & 2. Increase everyone’s salary by 5000 using spread and return new array
+let updatedUsers = users.map(user => ({
+  ...user,
+  salary: user.salary + 5000
+}));
+
+// 3. Sort based on salary (high to low)
+let sortedUsers = updatedUsers.sort((a, b) => b.salary - a.salary);
+
+// Print final result
+console.log(sortedUsers);
