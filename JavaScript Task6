@@ -1,0 +1,324 @@
+JavaScript Array & String Methods – Complete Professional Task Sheet
+
+
+SECTION 1 – Array Higher Order Methods Tasks
+
+Task 1 – forEach() Practice let subjects = ["Maths", "Science", "English", "History"]
+Requirements:
+•	Use forEach()
+•	Print Subject 1: Maths ... Subject 4: History
+•	Store result in a variable
+•	Question: Why does forEach() return undefined?
+//Ans: 
+   let subjects = ["Maths", "Science", "English", "History"]
+   let result = subjects.forEach(function(subject, index) {
+    console.log(`Subject ${index + 1}: ${subject}`);
+});
+
+console.log(result); // undefined
+forEach() is designed to perform an action on each array element, not to create or return a new array.
+It executes a function for each item.
+It does not return anything.
+Therefore, its return value is always undefined.
+
+Task 2 – map() Practice let prices = [100, 200, 300, 400]
+Requirements:
+•	Use map()
+•	Add 10% GST
+•	Return new array
+•	Expected Output: [110, 220, 330, 440]
+//Ans:
+let prices = [100, 200, 300, 400];
+
+let newPrices = prices.map(function(price) {
+    return price * 1.10; // Add 10% GST
+});
+
+console.log(newPrices);
+
+Task 3 – filter() Practice
+let students = [  { name: "A", marks: 45 },
+ { name: "B", marks: 75 },
+ { name: "C", marks: 35 },
+ { name: "D", marks: 85 }
+]
+Requirements:
+•	Use filter()
+•	Get students scoring above 50
+•	Print filtered array 
+//Ans: 
+let students = [
+  { name: "A", marks: 45 },
+  { name: "B", marks: 75 },
+  { name: "C", marks: 35 },
+  { name: "D", marks: 85 }
+];
+
+let passedStudents = students.filter(function(student) {
+    return student.marks > 50;
+});
+
+console.log(passedStudents);
+
+Task 4 – find() Practice
+Use same students array
+Requirements:
+•	Use find()
+•	Find first student scoring above 50
+•	Print that object
+•	Question: Difference between filter() and find()?
+//Ans:
+let students = [
+  { name: "A", marks: 45 },
+  { name: "B", marks: 75 },
+  { name: "C", marks: 35 },
+  { name: "D", marks: 85 }
+];
+
+let firstPassed = students.find(function(student) {
+    return student.marks > 50;
+});
+
+console.log(firstPassed);
+
+Difference Between filter() and find()
+       filter()	                                  find()
+Returns all matching elements	     Returns only the first matching element
+Returns an array	                 Returns a single object (or undefined)
+Continues checking entire array	  Stops once match is found
+
+Task 5 – reduce() Practice
+let cart = [  { item: "Shirt", price: 1000 },
+ { item: "Shoes", price: 2000 },  { item: "Watch", price: 3000 }
+]
+Requirements:
+•	Use reduce()
+•	Calculate total price
+•	Bonus: Add 5% tax inside reduce()
+//Ans:
+let cart = [
+  { item: "Shirt", price: 1000 },
+  { item: "Shoes", price: 2000 },
+  { item: "Watch", price: 3000 }
+];
+
+let total = cart.reduce(function(accumulator, product) {
+    return accumulator + product.price;
+}, 0);
+
+console.log("Total Price:", total);
+let totalWithTax = cart.reduce(function(accumulator, product) {
+    return accumulator + product.price * 1.05;
+}, 0);
+
+console.log("Total with 5% Tax:", totalWithTax);
+
+Task 6 – some() Practice let numbers = [1, 3, 5, 7, 8] Requirement:
+•	Check if at least one number is even
+•	Output: true 
+//Ans: 
+let numbers = [1, 3, 5, 7, 8];
+
+let hasEven = numbers.some(function(num) {
+    return num % 2 === 0;  // Check if number is even
+});
+
+console.log(hasEven);
+
+Task 7 – every() Practice let ages = [22, 25, 19, 30]
+Requirement:
+•	Check if all ages are above 18
+//Ans: 
+let ages = [22, 25, 19, 30];
+
+let allAdults = ages.every(function(age) {
+    return age > 18;   // Check if age is above 18
+});
+
+console.log(allAdults);
+
+Task 8 – sort() Practice let salaries = [50000, 10000, 70000, 30000]
+Requirements:
+•	Sort ascending
+•	Sort descending
+•	Explain why normal sort() fails for numbers
+//Ans: 
+let salaries = [50000, 10000, 70000, 30000]
+// for ascending
+let ascending = [...salaries].sort((a, b) => a - b);
+console.log("Ascendind", ascending);
+// for descendind
+let descending = [...salaries].sort((a, b) => b - a);
+console.log("Descending", descending);
+
+ // Why normal sort() fails?
+// Because default sort() treats numbers as strings ("10000" < "70000"), so we need a compare function.
+
+Task 9 – Array Conversion Methods let arr = [10, 20, 30, 40]
+Requirements:
+•	Convert using toString()
+•	Convert using join("-")
+•	Expected Output: 10-20-30-40
+//Ans 
+let arr = [10, 20, 30, 40];
+
+// Using toString()
+let str1 = arr.toString();
+console.log("Using toString():", str1);
+
+// Using join("-")
+let str2 = arr.join("-");
+console.log("Using join('-'):", str2);
+
+//Expected Output :
+Using toString(): 10,20,30,40
+Using join('-'): 10-20-30-40
+
+SECTION 2 – String Methods Tasks
+
+Task 10 – charAt() & charCodeAt() let word = "Developer"
+Requirements:
+•	Get character at index 4
+•	Get ASCII value of character at index 4
+//Ans: 
+let word = "Developer";
+
+//  Get character at index 4
+let character = word.charAt(4);
+console.log("Character at index 4:", character);
+
+//  Get ASCII value of character at index 4
+let asciiValue = word.charCodeAt(4);
+console.log("ASCII value:", asciiValue);
+
+Task 11 – slice() let company = "StacklyCompany" Extract: Company
+//Ans:
+let company = "StacklyCompany";
+
+// Extract "Company"
+let result = company.slice(7);
+
+console.log(result);
+
+Task 12 – Case Conversion let userInput = "javaScript"
+•	Convert to uppercase
+•	Convert to lowercase
+//Ans:
+let userInput = "javaScript";
+
+// Convert to Uppercase
+let upper = userInput.toUpperCase();
+console.log("Uppercase:", upper);
+
+// Convert to Lowercase
+let lower = userInput.toLowerCase();
+console.log("Lowercase:", lower);
+
+Task 13 – trim() let email = "   naveen@gmail.com   " Remove unwanted spaces
+//Ans:
+let email = "   naveen@gmail.com   ";
+
+// Remove unwanted spaces
+let cleanEmail = email.trim();
+console.log("Trimmed Email:", cleanEmail);
+
+Task 14 – includes() let message = "Welcome to JavaScript Training"
+Check if "JavaScript" exists
+//Ans:
+let message = "Welcome to JavaScript Training";
+
+// Check if "JavaScript" exists
+let hasJS = message.includes("JavaScript");
+console.log("Contains 'JavaScript'?", hasJS);
+
+Task 15 – split() let movie = "spider-man-no-way-home" Convert into array
+//Ans:
+let movie = "spider-man-no-way-home";
+
+// Convert into array
+let movieArray = movie.split("-");
+console.log(movieArray);
+
+Task 16 – indexOf() & lastIndexOf() let text = "programming"
+•	Find first index of 'm'
+•	Find last index of 'm'
+//Ans: 
+let text = "programming";
+
+//  First index of 'm'
+let firstIndex = text.indexOf('m');
+console.log("First index of 'm':", firstIndex);
+
+//  Last index of 'm'
+let lastIndex = text.lastIndexOf('m');
+console.log("Last index of 'm':", lastIndex);
+
+Task 17 – replace() let tech = "I love python" Replace python with javascript
+//Ans:
+let tech = "I love python";
+
+// Replace "python" with "javascript"
+let updatedTech = tech.replace("python", "javascript");
+
+console.log(updatedTech);
+
+Task 18 – startsWith() & endsWith() let filename = "report.pdf"
+•	Check if starts with "report"
+•	Check if ends with ".pdf"
+//Ans: 
+let filename = "report.pdf";
+
+// Check if starts with "report"
+let starts = filename.startsWith("report");
+console.log("Starts with 'report'?", starts);
+
+// Check if ends with ".pdf"
+let ends = filename.endsWith(".pdf");
+console.log("Ends with '.pdf'?", ends);
+
+Task 19 – repeat() let star = "*" Print 10 stars using repeat()
+
+let star = "*";
+
+// Print 10 stars
+let stars = star.repeat(10);
+console.log(stars);
+
+FINAL TEAM CHALLENGE – Employee Report System
+let employees = [  { name: "Naveen", salary: 50000 },
+ { name: "Arun", salary: 30000 },
+ { name: "Kiran", salary: 70000 }
+]
+Requirements:
+•	Convert names to uppercase using map()
+•	Filter salary > 40000
+•	Find first salary > 60000
+•	Calculate total salary using reduce()
+•	Sort salaries descending
+
+let employees = [  { name: "Naveen", salary: 50000 },
+ { name: "Arun", salary: 30000 },
+ { name: "Kiran", salary: 70000 }
+]
+// 1️⃣ Convert names to uppercase using map()
+let upperCaseNames = employees.map(emp => ({
+  ...emp, 
+  name: emp.name.toUpperCase()
+}));
+console.log("Uppercase Names:", upperCaseNames);
+
+// 2️⃣ Filter salary > 40000
+let highSalary = employees.filter(emp => emp.salary > 40000);
+console.log("Salary > 40000:", highSalary);
+
+// 3️⃣ Find first salary > 60000
+let firstHighSalary = employees.find(emp => emp.salary > 60000);
+console.log("First salary > 60000:", firstHighSalary);
+
+// 4️⃣ Calculate total salary using reduce()
+let totalSalary = employees.reduce((acc, emp) => acc + emp.salary, 0);
+console.log("Total Salary:", totalSalary);
+
+// 5️⃣ Sort salaries descending
+let sortedDescending = [...employees].sort((a, b) => b.salary - a.salary);
+console.log("Salaries Descending:", sortedDescending);
