@@ -1,0 +1,27 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 30px;
+}
+
+input {
+  padding: 10px;
+  width: 250px;
+  font-size: 14px;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+ol {
+  margin-top: 20px;
+}
+
+/* Class applied using setAttribute() */
+.taskItem {
+  margin: 10px 0;
+  cursor: pointer;
+}
